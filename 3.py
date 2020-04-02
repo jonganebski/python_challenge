@@ -1,3 +1,4 @@
+# http://www.pythonchallenge.com/pc/def/equality.html
 code = """
 kAewtloYgcFQaJNhHVGxXDiQmzjfcpYbzxlWrVcqsmUbCunkfxZWDZjUZMiGqhRRiUvGmYmvnJIHEmbT
 MUKLECKdCthezSYBpIElRnZugFAxDRtQPpyeCBgBfaRVvvguRXLvkAdLOeCKxsDUvBBCwdpMMWmuELeG
@@ -1261,8 +1262,9 @@ for i in code:
 answer = ""
 n = 0
 for i in list:
-  if (list[n-3:n+4]) == [1, 1, 1, i, 1, 1, 1] and i != 1:
+  if (list[n-3:n+4]) == [1, 1, 1, i, 1, 1, 1] and i != 1 and list[n-4] != 1 and list[n+5] != 1:
     answer += i
+    print(list[n-3:n+4])
   n += 1
 print(answer)
   
