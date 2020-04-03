@@ -1260,8 +1260,11 @@ for i in mirror_code:
     mirror_code = mirror_code.replace(i, 'a')
 
 answer = ''
+if mirror_code[0:8] == 'AAAaAAAa':
+  answer += code[3]
 for n in range(4, len(mirror_code)-5):
   if mirror_code[n-4:n+5] == 'aAAAaAAAa':
     answer += code[n]
+if mirror_code[-9:-1] == 'aAAAaAAA':
+  answer += code[-4]
 print(answer)
-  
