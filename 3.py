@@ -1251,20 +1251,17 @@ dCdFLtBQPtFQuCdKOrpndJNUFQIDSbetUKylhSUjcDVtbiQrWMRQhAwGUZyPneCGUjGBBTkLqxLAXXtB
 KfErkDaWMFZZeuqDmXKJEGHyToPUhPphfVhgUZgbIuRAtWnroImpJKqqmEZqeNQCKzhjIkKQHURWLXFw
 PBuijeoTSpsVLaOGuLVjMZXkBvVXwUuHfBihziiavGSYofPNeKsTXruMUumRRPQJzvSzJkKbtSipiqBd"""
 
-list = []
-for i in code:
-  if i.isupper() is True:
-    list.append(1)
-  else:
-    list.append(i)
-# print(list)
+mirror_code = code
 
-answer = ""
-n = 0
-for i in list:
-  if (list[n-3:n+4]) == [1, 1, 1, i, 1, 1, 1] and i != 1 and list[n-4] != 1 and list[n+5] != 1:
-    answer += i
-    print(list[n-3:n+4])
-  n += 1
+for i in mirror_code:
+  if i.isupper() is True:
+    mirror_code = mirror_code.replace(i, 'A')
+  else:
+    mirror_code = mirror_code.replace(i, 'a')
+
+answer = ''
+for n in range(4, len(mirror_code)-5):
+  if mirror_code[n-4:n+5] == 'aAAAaAAAa':
+    answer += code[n]
 print(answer)
   
