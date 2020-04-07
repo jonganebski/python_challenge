@@ -1,41 +1,33 @@
 # http://www.pythonchallenge.com/pc/def/channel.html
 
-import urllib.request
-import pickle
+import zipfile
+import re
 
-read_file = urllib.request.urlopen('http://www.pythonchallenge.com/pc/def/banner.p').read()
-open_file = pickle.loads(read_file)
+# myzip = zipfile.ZipFile('channel.zip').read()
+# print(myzip)
 
-def seperate():
-  all = []
-  for i in open_file:
-    list = []
-    for t in i:
-      list.append(t[0])
-      list.append(t[1])
-    all.append(list)
-  return all
+# num = 90052
+# for i in range(10):
+#   textfile = f'{num}.txt'
+#   with zipfile.ZipFile('channel.zip') as myzip:
+#   # with myzip.open('readme.txt') as myfile: #from 90052  
+#     with myzip.open(textfile) as myfile:
+#     # with myzip.open('94191.txt') as myfile:
+#       text = str(myfile.read())
+#       num = re.findall('\d+', text)
+#       print(num)
+#       print(text) # b'Next nothing is 94191'
 
-def pair(all):
-  all_list = []
-  for i in all:
-    line = []
-    if len(i) <= 2:
-        line = [tuple(i)]
-    else:
-      for n in range(len(i)-1):
-        line += [(i[n], i[n+1])]
-    all_list.append(line)
-  return all_list
-
-print(seperate())
-all = seperate()
-print(pair(all))
-
-for i in pair(all):
-  # print(i)
-  # print('\n')
-  line = ''
-  for tuple in i:
-    line += tuple[0] * tuple[1]
-  print(line)
+channel = zipfile.ZipFile('channel.zip')
+num = 90052
+for i in range(1000):
+  text = channel.read(f'{num}.txt')
+  text = str(text.decode('utf-8'))
+  num_list = re.findall('\d+', text)
+  if num_list == []:
+    print(text)
+    break
+  else:
+    num = num_list[0]
+    print(text)
+  # print(num)
