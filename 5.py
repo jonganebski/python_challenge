@@ -12,5 +12,5 @@ for i in open_file:
     line = ''
     for tuple in i:
       line += tuple[0] * tuple[1]
-      print(line)
+    print(line)
 
