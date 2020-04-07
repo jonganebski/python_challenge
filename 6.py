@@ -23,16 +23,18 @@ def pair(all):
     if len(i) <= 2:
         line = [tuple(i)]
     else:
-      for n in range(len(i)-2):
+      for n in range(len(i)-1):
         line += [(i[n], i[n+1])]
     all_list.append(line)
   return all_list
 
+print(seperate())
 all = seperate()
+print(pair(all))
 
 for i in pair(all):
   # print(i)
-  print('\n')
+  # print('\n')
   line = ''
   for tuple in i:
     line += tuple[0] * tuple[1]
