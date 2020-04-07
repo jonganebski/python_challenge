@@ -31,3 +31,6 @@ for i in range(1000):
     num = num_list[0]
     print(text)
   # print(num)
+
+comment = channel.getinfo('29.txt').comment
+print(comment)
