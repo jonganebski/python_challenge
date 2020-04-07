@@ -8,4 +8,9 @@ read_file = urllib.request.urlopen('http://www.pythonchallenge.com/pc/def/banner
 open_file = pickle.loads(read_file)
 
 for i in open_file:
-    print(i)
+    print('\n')
+    line = ''
+    for tuple in i:
+      line += tuple[0] * tuple[1]
+      print(line)
+
