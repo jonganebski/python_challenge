@@ -32,5 +32,11 @@ for i in range(1000):
     print(text)
   # print(num)
 
-comment = channel.getinfo('29.txt').comment
-print(comment)
+namelist = channel.namelist()
+collection = ''
+
+for i in namelist:
+  comment = channel.getinfo(f'{i}').comment
+  comment = comment.decode('utf-8')
+  collection += comment
+print(collection)
