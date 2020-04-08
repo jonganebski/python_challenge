@@ -19,24 +19,31 @@ import re
 #       print(text) # b'Next nothing is 94191'
 
 channel = zipfile.ZipFile('channel.zip')
-num = 90052
-for i in range(1000):
-  text = channel.read(f'{num}.txt')
-  text = str(text.decode('utf-8'))
-  num_list = re.findall('\d+', text)
-  if num_list == []:
-    print(text)
-    break
-  else:
-    num = num_list[0]
-    print(text)
-  # print(num)
 
-namelist = channel.namelist()
-collection = ''
+def numbers():
+  nums = []
+  num = 90052
+  for i in range(1000):
+    text = channel.read(f'{num}.txt')
+    text = text.decode('utf-8')
+    foundnum_list = re.findall('\d+', text)
+    if foundnum_list == []:
+      print(text)
+      break
+    else:
+      num = foundnum_list[0]
+      print(text)
+      nums.append(num)
+    # print(num)
+  return nums
 
-for i in namelist:
-  comment = channel.getinfo(f'{i}').comment
-  comment = comment.decode('utf-8')
-  collection += comment
-print(collection)
+def collec_comm(nums_list):
+  collection = ''
+  for i in nums_list:
+    comment = channel.getinfo(f'{i}.txt').comment
+    comment = comment.decode('utf-8')
+    collection += comment
+  return collection
+
+nums_list = numbers()
+print(collec_comm(nums_list))
