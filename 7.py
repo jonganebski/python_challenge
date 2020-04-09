@@ -17,11 +17,14 @@ im_rgb = image.convert('RGB')
 # for i in range(0, width):
 
 answer = ''
-for i in range(width):
+for i in range(0, width, 7):
     rgb = im_rgb.getpixel((i, 43))
     if rgb[0] == rgb[1] == rgb[2]:
-        if i >= 1 and answer[-1] == chr(rgb[0]):
-            None
-        else:
-            answer += (chr(rgb[0]))
+        answer += (chr(rgb[0]))
+print(answer)
+
+nums = re.findall('\d+', answer)
+answer = ''
+for n in nums:
+    answer += chr(int(n))
 print(answer)
