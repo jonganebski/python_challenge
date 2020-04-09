@@ -16,9 +16,12 @@ im_rgb = image.convert('RGB')
 # (0, 43) ~ (607, 51)
 # for i in range(0, width):
 
+answer = ''
 for i in range(width):
     rgb = im_rgb.getpixel((i, 43))
     if rgb[0] == rgb[1] == rgb[2]:
-        print(chr(rgb[0]))
-    else:
-        print(rgb)
+        if i >= 1 and answer[-1] == chr(rgb[0]):
+            None
+        else:
+            answer += (chr(rgb[0]))
+print(answer)
