@@ -1,4 +1,5 @@
 from PIL import Image
+import re
 
 image = Image.open('oxygen.png')
 print(image.size)
